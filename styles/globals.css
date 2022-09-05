@@ -1,26 +1,112 @@
-html,
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #f1f3ff;
+  /* box-shadow: 0px 4px 40px rgba(114, 114, 114, 0.25); */
 }
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 * {
-  box-sizing: border-box;
+  /* font-family: "Josefin Sans", sans-serif; */
+  font-family: "Lexend Deca", sans-serif;
+}
+@layer base {
+  h1,
+  li,
+  h2,
+  h3,
+  i {
+    @apply text-gray-600;
+  }
+  p {
+    @apply text-gray-700;
+  }
+}
+@layer components {
+  .social {
+    @apply flex justify-center;
+  }
+  .social a {
+    @apply mx-2 md:mx-3 bg-white text-lg md:text-xl lg:text-2xl w-9 md:w-10 lg:w-12 h-9 md:h-10 lg:h-12 rounded-full flex justify-center items-center hover:shadow-lg;
+  }
+  .cetagory button {
+    @apply mx-1 xl:mx-2 py-1 px-3 lg:px-4 rounded text-xs md:text-sm lg:text-[16px] xl:text-xl font-medium duration-700 hover:text-white;
+  }
+  .links {
+    @apply flex flex-col lg:flex-row w-[90%] lg:w-full mx-auto lg:mb-2;
+  }
+  .links a {
+    @apply lg:mx-7 my-4 font-semibold;
+  }
+}
+.cetagory button:hover {
+  background: linear-gradient(270deg, #66bef5 0%, #506bd5 100%);
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@layer components {
+  .banner {
+    @apply w-[90%] md:w-[700px] lg:w-[1000px] xl:w-[1250px]  md:h-[360px] lg:h-[500px] xl:h-[560px] object-cover mx-auto rounded;
   }
-  body {
-    color: white;
-    background: black;
+  .blog {
+    @apply w-[90%] sm:w-[85%] md:w-[700px] lg:w-[1000px] xl:w-[1250px] mx-auto mb-16;
   }
+  .blog .auth_publish {
+    @apply flex justify-between items-center mt-1 md:mt-2 mb-3 text-xs md:text-sm;
+  }
+  .blog .auth {
+    @apply flex items-center text-xs;
+  }
+  .blog .auth img {
+    @apply w-8 h-8 rounded-full mr-2;
+  }
+  .blog h1 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold mb-6;
+  }
+  .blog h2 {
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold break-all;
+  }
+  .blog h3 {
+    @apply text-xl md:text-2xl lg:text-3xl font-bold mb-2 mt-3 md:mt-6 lg:mt-8 break-all;
+  }
+  .blog p {
+    @apply text-sm lg:text-[18px] leading-6 lg:leading-8 my-2 break-all;
+  }
+  .blog ul {
+    @apply mt-4 mb-7 md:mb-9 lg:mb-10;
+  }
+  .blog li {
+    @apply text-sm md:text-[16px] lg:text-[18px] list-disc list-inside my-3 md:my-5 lg:my-5;
+  }
+  .blog img {
+    @apply w-full md:w-[450px] lg:w-[750px] rounded;
+  }
+
+  .blog code {
+    @apply rounded w-full h-16 md:w-[450px] lg:w-[750px] bg-gray-600;
+  }
+}
+
+/* @layer utilities {
+} */
+
+.icon_hover {
+  padding: 2.9px 9px;
+  margin: 0px 8px;
+  border-radius: 3px;
+  transition-duration: 0.7s;
+  cursor: pointer;
+}
+.icon_hover:hover {
+  background-color: #516bd530;
+}
+
+.gradiant_text {
+  background: linear-gradient(90deg, #516cd5 4.25%, #67c2f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+.gradiant_btn {
+  background: linear-gradient(270deg, #66bef5 0%, #506bd5 100%);
 }
