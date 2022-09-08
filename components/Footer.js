@@ -7,7 +7,7 @@ export class Footer extends Component {
         {/********* Auther Section ************/}
         <section className=" py-6 lg:py-8 mt-9 xl:mt-20 mb-6 lg:mb-9 w-[90%] md:w-[700px] lg:w-[800px] xl:w-[1000px] mx-auto border-y-2  flex flex-col lg:flex-row lg:justify-center lg:items-center text-center lg:text-start">
           <img
-            src="./ashraf.png"
+            src="/ashraf.png"
             alt="image"
             className=" w-[110px] h-[110px] lg:w-60 lg:h-[265px] object-cover rounded-full lg:rounded mx-auto lg:mx-0 lg:mr-9 mb-3"
           />

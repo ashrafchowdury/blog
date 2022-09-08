@@ -36,7 +36,7 @@ export default function Home() {
         </p>
         <form
           onSubmit={handleSubmit}
-          className=" w-[100%] lg:w-[570px] xl:w-[650px] h-24 md:h-24 lg:h-28 xl:h-32 rounded-md bg-white flex justify-center items-center mx-auto mt-6 lg:mt-9 mb-5 lg:mb-8 px-2 shadow-md"
+          className=" w-[100%] lg:w-[570px] xl:w-[650px] h-24 md:h-24 lg:h-28 xl:h-32 rounded-md bg-white dark:bg-[#253345] flex justify-center items-center mx-auto mt-6 lg:mt-9 mb-5 lg:mb-8 px-2 shadow-md"
         >
           <div className=" w-[85%] relative">
             <i className="fa-regular fa-envelope absolute left-3 lg:left-4 top-[13px] lg:top-[17px] text-[22px] text-gray-400"></i>
@@ -47,7 +47,7 @@ export default function Home() {
               onChange={(e) => setemail(e.target.value)}
               value={email}
             />
-            <button className="gradiant_btn absolute right-0 text-sm lg:text-[16px] font-bold text-white py-[12.6px] lg:py-[16.4px] px-3 md:px-4 lg:px-6 rounded-r">
+            <button className="gradiant_btn absolute right-0 text-sm lg:text-[16px] font-bold text-white py-[12.8px] lg:py-[16.8px] px-3 md:px-4 lg:px-6 rounded-r">
               Subscribe
             </button>
           </div>
