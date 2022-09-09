@@ -4,8 +4,9 @@ import Social from "../components/Social";
 import Box from "../components/Box";
 import Footer from "../components/Footer";
 import { notification } from "../components/Toast";
+import { sanityClient, urlFor } from "../sanity";
 
-export default function Home() {
+export default function Home({ posts }) {
   const [email, setemail] = useState("");
   const data = [1, 2, 3, 4, 5, 6, 7, 8];
   const handleSubmit = (e) => {
@@ -72,11 +73,35 @@ export default function Home() {
 
       {/********* Article Section ************/}
       <article className=" w-[90%] md:w-[700px] lg:w-[1000px] xl:w-[1400px] mx-auto flex justify-center flex-wrap">
-        {data.map((value) => {
-          return <Box />;
+        {posts.map((value) => {
+          return (
+            <React.Fragment key={value._id}>
+              <Box {...value} />
+            </React.Fragment>
+          );
         })}
       </article>
       <Footer />
     </>
   );
 }
+
+export const getServerSideProps = async () => {
+  const query = `*[_type == "post"]{
+    _id,
+    _createdAt,
+    title,
+    mainImage,
+    slug,
+    categories[] -> {
+      title 
+     },
+  }`;
+  const posts = await sanityClient.fetch(query);
+
+  return {
+    props: {
+      posts,
+    },
+  };
+};

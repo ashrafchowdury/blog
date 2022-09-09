@@ -53,7 +53,7 @@ const Nav = () => {
   };
 
   return (
-    <nav className=" w-[90%] sm:w-[480px] md:w-[700px] lg:w-[1000px] xl:w-[1250px] h-28 flex items-center justify-between mx-auto">
+    <nav className=" w-[90%] sm:w-[480px] md:w-[700px] lg:w-[1000px] xl:w-[1250px] h-20 lg:h-28 flex items-center justify-between mx-auto">
       {/*********************Logo*****************************/}
       <Link href="/">
         <div className=" flex items-center cursor-pointer">

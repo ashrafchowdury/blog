@@ -1,72 +1,52 @@
 import React from "react";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
-import Tost from "../../components/Toast";
+import { PortableText } from "@portabletext/react";
+import { sanityClient, urlFor } from "../../sanity";
+import { useRouter } from "next/router";
 
-const slug = () => {
+//this object help PortableText for showing the Blog images
+const displayImage = {
+  types: {
+    image: ({ value }) => {
+      if (!value?.asset?._ref) null;
+      return (
+        <img
+          alt={value.alt || " "}
+          loading="lazy"
+          src={urlFor(value).fit("max").auto("format")}
+          //you can also add .width(320).height(240) before .fit function
+        />
+      );
+    },
+  },
+};
+
+const Post = ({ mainImage, title, _createdAt, author, body }) => {
+  const router = useRouter();
   return (
     <>
       <Nav />
-      <img
-        src="https://skilvul-prod-01.s3.ap-southeast-1.amazonaws.com/course/Skilvul%20asset%20volume%202-02.jpg"
-        alt="image"
-        className="banner"
-      />
+      <img src={urlFor(mainImage).url()} alt="image" className="banner" />
       <article className="blog">
         <div className="auth_publish">
           <span className="auth">
-            <img src="../ashraf.png" alt="image" /> <p>Ashraf Chowdury</p>
+            <img src={urlFor(author.image).url()} alt="image" />{" "}
+            <p>{author.name}</p>
           </span>
-          <span>PublishedAt: 21/3/2021</span>
+          <span className="time">
+            {" "}
+            Publish Data: {new Date(_createdAt).toLocaleString()}
+          </span>
         </div>
-        <h1>All About Firebasae</h1>
 
-        <h3>10 Easy steps we go throw in</h3>
-        <ul>
-          <li>Create a Firebase account.</li>
-          <li>Create a new project in Firebase.</li>
-          <li>Add Firebase to your web application.</li>
-          <li>Install the Firebase CLI tools.</li>
-          <li>Login to your firebase account.</li>
-          <li>Initialize the project.</li>
-          <li>Select the firebase hosting you created.</li>
-          <li>Select out as a build folder.</li>
-          <li>Update your build script and run the build command.</li>
-          <li>Finally, deploy the project on Firebase.</li>
-        </ul>
-        <h3>If you don't know what is Firebase?</h3>
-        <p>
-          Firebase is a Backend Service platform developed by Google. It offers
-          developers a complete set of development tools and provides the
-          backend for building highly-scalable web and mobile applications.
-        </p>
+        <h1>{title}</h1>
 
-        <h3>Step 1: Create a Firebase account.</h3>
-        <p>
-          {" "}
-          Go to <a href="">firebase.com</a> and create an account.{" "}
-        </p>
-        <h3>Step 2: Create a new project in Firebase.</h3>
-        <img
-          src="https://cdn.hashnode.com/res/hashnode/image/upload/v1660567232413/mzNy_V9Y2.png?auto=compress,format&format=webp"
-          alt="image"
-        />
-
-        <h3>Step 3: Add Firebase to your web app.</h3>
-        <p>Click the button to add your Domain name.</p>
-        <img
-          src="https://cdn.hashnode.com/res/hashnode/image/upload/v1660568008489/T3o9HRknI.jpg?auto=compress,format&format=webp"
-          alt="image"
-        />
-
-        <h3>Step 9: Update your build script and run the build command.</h3>
-        <p>Go to the package.json folder 📂 and add this build command.</p>
-
-        <code>“build”: “next build && next export”,</code>
-
-        <img
-          src="https://cdn.hashnode.com/res/hashnode/image/upload/v1660568269475/HnE7zpOMl.jpg?auto=compress,format&format=webp"
-          alt="image"
+        <PortableText
+          dataset="production"
+          projectId="q1zq7tcr"
+          value={body}
+          components={displayImage}
         />
       </article>
       <Footer />
@@ -74,4 +54,58 @@ const slug = () => {
   );
 };
 
-export default slug;
+export default Post;
+
+//genarating blog path
+export async function getStaticPaths() {
+  const query = `*[_type == "post"]{
+      _id,
+      slug {
+        current
+      }
+    }`;
+  //blog path request || sanityClient is come from the sanity.js page
+  const posts = await sanityClient.fetch(query);
+  //retrive the blog path
+  const paths = posts.map((value) => ({
+    params: {
+      slug: value.slug.current,
+    },
+  }));
+  return {
+    paths,
+    fallback: true,
+  };
+}
+
+//get the blog
+export async function getStaticProps({ params }) {
+  //bolg query
+  const query = `*[_type == "post" && slug.current == $slug][0]{
+    _id,
+    _createdAt,
+    title,
+    body, 
+    mainImage, 
+    description,
+     body,
+     slug,
+     categories[] -> {
+      title 
+     },
+     author-> {
+      name,
+      image
+     },
+  }`;
+  //blog request || sanityClient is come from the sanity.js page
+  const post = await sanityClient.fetch(query, {
+    slug: params?.slug,
+  });
+  return {
+    props: {
+      ...post,
+    },
+    revalidate: 60, //after 60 send it will update the old cached version
+  };
+}
