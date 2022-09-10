@@ -5,6 +5,7 @@ import { PortableText } from "@portabletext/react";
 import { sanityClient, urlFor } from "../../sanity";
 import { useRouter } from "next/router";
 import { notification } from "../../components/Toast";
+import Box from "../../components/Box";
 
 //this object help PortableText for showing the Blog images
 const displayImage = {
@@ -36,7 +37,15 @@ const displayImage = {
   },
 };
 
-const Post = ({ mainImage, title, _createdAt, author, body }) => {
+const Post = ({
+  mainImage,
+  title,
+  _createdAt,
+  author,
+  body,
+  categories,
+  suggested_post,
+}) => {
   const router = useRouter();
   return (
     <>
@@ -63,6 +72,25 @@ const Post = ({ mainImage, title, _createdAt, author, body }) => {
           components={displayImage}
         />
       </article>
+      <h3 className="w-[90%] sm:w-[85%] md:w-[700px] lg:w-[1000px] xl:w-[1050px] mx-auto text-[22px] md:text-[25px] lg:text-4xl uppercase font-bold pl-3 mb-4 lg:mb-5">
+        {" "}
+        Suggested
+      </h3>
+      <section className="w-[90%] sm:w-[85%] md:w-[700px] lg:w-[1000px] xl:w-[1050px] mx-auto flex justify-start flex-wrap">
+        {suggested_post
+          ?.filter((value) => {
+            return value.categories[0].title == categories[0].title;
+          })
+          .slice(0, 2)
+          .map((value) => {
+            return (
+              <React.Fragment key={value._id}>
+                <Box {...value} />
+              </React.Fragment>
+            );
+          })}
+      </section>
+
       <Footer />
     </>
   );
@@ -93,6 +121,7 @@ export async function getStaticPaths() {
 }
 
 //get the blog
+
 export async function getStaticProps({ params }) {
   //bolg query
   const query = `*[_type == "post" && slug.current == $slug][0]{
@@ -112,14 +141,31 @@ export async function getStaticProps({ params }) {
       image
      },
   }`;
+  //
+  const suggested_query = `*[_type == "post"]{
+    _id,
+    _createdAt,
+    title,
+    mainImage,
+    slug,
+    categories[] -> {
+      title 
+     },
+  }`;
   //blog request || sanityClient is come from the sanity.js page
   const post = await sanityClient.fetch(query, {
     slug: params?.slug,
   });
+  //
+  const suggested_post = await sanityClient.fetch(suggested_query);
+
   return {
     props: {
       ...post,
+      suggested_post,
     },
     revalidate: 60, //after 60 send it will update the old cached version
   };
 }
+
+//
