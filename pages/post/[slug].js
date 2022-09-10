@@ -4,6 +4,7 @@ import Footer from "../../components/Footer";
 import { PortableText } from "@portabletext/react";
 import { sanityClient, urlFor } from "../../sanity";
 import { useRouter } from "next/router";
+import { notification } from "../../components/Toast";
 
 //this object help PortableText for showing the Blog images
 const displayImage = {
@@ -17,6 +18,19 @@ const displayImage = {
           src={urlFor(value).fit("max").auto("format")}
           //you can also add .width(320).height(240) before .fit function
         />
+      );
+    },
+    code: ({ value }) => {
+      const handleCode = () => {
+        //copy text
+        navigator.clipboard.writeText(value.code);
+        //popup notification call
+        notification("suc", "Code copied");
+      };
+      return (
+        <pre className="code" onClick={handleCode}>
+          {value.code}
+        </pre>
       );
     },
   },
