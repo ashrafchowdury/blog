@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
+//Configure the Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyC1e4dQzgv6nWyOeJOrQfNjBUAqnofpGPw",
   authDomain: "blog-dd599.firebaseapp.com",
@@ -14,6 +15,17 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
+//Configure the firebase authentication
 export const auth = getAuth(app);
+//Configure the firebase firestore
 export const db = getFirestore(app);
+
+// const firebaseConfig = {
+//   apiKey: process.env.FIREBAS_API_KEY,
+//   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+//   projectId: process.env.FIREBASE_PROJECT_ID,
+//   storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+//   messagingSenderId: process.env.FIREBASE_MSG_SENDER_ID,
+//   appId: process.env.FIREBASE_APP_ID,
+//   measurementId: process.env.FIREBASE_MEASUREMENT_ID,
+// };

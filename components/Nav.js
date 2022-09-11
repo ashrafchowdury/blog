@@ -5,22 +5,28 @@ import { useRouter } from "next/router";
 import { notification } from "../components/Toast";
 
 const Nav = () => {
+  //use for change the theme
   const [mood, setmood] = useState("dark");
+  //use for show the mobile menu section and hide on desktop
   const [menu, setmenu] = useState("hidden");
+  //use for search blogs on mobile
   const [search, setsearch] = useState("");
   const router = useRouter();
+  //comes from the context file
   const { logout, currentUser } = useAuth();
 
   useEffect(() => {
+    //condition for see the device are under 1050px or not
     window.innerWidth >= 1050 ? setmenu("") : setmenu("hidden");
 
+    //Handle the Theme when the page load
     const handleDark = () => {
       //check in LS theme equal to dark or not
       // and also check default media preference
       if (
         localStorage.theme === "dark" ||
         (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
+          window.matchMedia("(prefers-color-scheme: dark)").matches) // check the media is dark or not
       ) {
         setmood("dark");
         //add class name on html tag
@@ -34,17 +40,20 @@ const Nav = () => {
     handleDark();
   }, [mood]);
 
+  //Handle User Logout
   const handleLogout = () => {
     logout();
     notification("suc", "Log Out Successfully");
     router.push("/");
   };
+
   //handle Dark Mood
   const handleDarkTheme = () => {
     //add dark theme on localStorage
     localStorage.setItem("theme", "dark");
     setmood("dark");
   };
+
   //handle Light Mood
   const handleLightTheme = () => {
     //add light theme on localStorage
@@ -52,9 +61,11 @@ const Nav = () => {
     setmood("light");
   };
 
+  //Handle the blogs search
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     if (!search) {
+      //when user click on the empty search bar they will send on Home page
       router.push("/");
     } else {
       router.push(`/search/${search}`);
@@ -63,7 +74,7 @@ const Nav = () => {
 
   return (
     <nav className=" w-[90%] sm:w-[480px] md:w-[700px] lg:w-[1000px] xl:w-[1250px] h-20 lg:h-28 flex items-center justify-between mx-auto">
-      {/*********************Logo*****************************/}
+      {/********************* Logo *****************************/}
       <Link href="/">
         <div className=" flex items-center cursor-pointer">
           <img src="/logo.svg" alt="image" className=" w-6 xl:w-9" />
@@ -73,10 +84,11 @@ const Nav = () => {
         </div>
       </Link>
 
-      {/***********************Links***************************/}
+      {/*********************** Links and Mobile Menu Section***************************/}
       <section
         className={`${menu} duration-700 fixed lg:relative left-0 top-0 z-10 w-[90%] sm:w-[75%] md:w-[55%] lg:w-auto h-screen lg:h-auto bg-white dark:bg-[#253345] lg:bg-transparent dark:lg:bg-transparent flex flex-col`}
       >
+        {/************************ Mobile Menu Logo | hide on desktop ***************************/}
         <div className=" w-[90%] mx-auto flex justify-between items-center mt-6">
           <div className=" flex items-center lg:hidden">
             <img src="/logo.svg" alt="image" className=" w-5" />
@@ -84,7 +96,6 @@ const Nav = () => {
               Roadmap
             </h1>
           </div>
-
           <span className="icon_hover py-[2px] px-[9px] lg:hidden">
             <i
               className="fa-solid fa-xmark text-2xl dark:text-white"
@@ -93,6 +104,7 @@ const Nav = () => {
           </span>
         </div>
 
+        {/************************ Mobile Menu Search bar | hide on desktop ***************************/}
         <form
           onSubmit={handleSearchSubmit}
           className=" w-[90%] relative mx-auto mt-4 mb-7 lg:hidden "
@@ -106,19 +118,20 @@ const Nav = () => {
             value={search}
           />
         </form>
-
+        {/************************ Links ***************************/}
         <div className="links">
           <Link href="/">Home</Link>
           <Link href="/">Blogs</Link>
           <Link href="/">About Me</Link>
           <Link href="/">Donate</Link>
         </div>
+        {/************************ Mobile Menu Signup Button | hide on desktop ***************************/}
         <button className="gradiant_btn lg:hidden absolute bottom-3 left-[50%] translate-x-[-50%] w-[90%] py-2 rounded font-bold text-sm text-white">
           Sign Up
         </button>
       </section>
 
-      {/**********Button************/}
+      {/**************************** Button & icons ********************************/}
       <div className=" flex items-center">
         <Link href="/search">
           <span className="icon_hover hidden lg:block py-[6px] px-[10px]">
@@ -126,6 +139,8 @@ const Nav = () => {
           </span>
         </Link>
 
+        {/************************ Condition for show the theme icon ***************************/}
+        {/** if theme equal to dark then show sun icon other vise show the moon icon **/}
         {mood == "dark" ? (
           <span
             className="icon_hover py-[5px] px-[10px]"
@@ -142,6 +157,8 @@ const Nav = () => {
           </span>
         )}
 
+        {/************************ Condition for show the light menu icon or dark menu icon ***************************/}
+        {/** if theme equal to dark then show light menu icon other vise show the dark menu icon **/}
         {mood == "dark" ? (
           <span
             className="icon_hover py-[4px] px-[8px]"
@@ -164,6 +181,8 @@ const Nav = () => {
           </span>
         )}
 
+        {/********* Condition for show Login button on the signup page and show the signup Button on other page  ****/}
+        {/******** These all Button are hide on the Mobile section ******/}
         {router.pathname == "/user/signup" ? (
           <Link href="/user/login">
             <button className="gradiant_btn hidden lg:block lg:py-2 lg:px-6 lg:rounded lg:uppercase lg:font-bold lg:text-white">
@@ -172,6 +191,7 @@ const Nav = () => {
           </Link>
         ) : (
           <>
+            {/************************ Condition for show the Logout Button and the Sign Up Button ***************************/}
             {currentUser?.email ? (
               <button
                 onClick={handleLogout}

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Social from "./Social";
+
 export class Footer extends Component {
   render() {
     return (
@@ -41,7 +42,7 @@ export class Footer extends Component {
               My Linkedin
             </button>
           </div>
-
+          {/********* Social Media Icons ************/}
           <Social />
         </footer>
       </>

@@ -1,6 +1,8 @@
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
+//Custom Notification using the react-tost packege
 export const notification = (msg, title) => {
   //position is notification position, autoClose is notification closing time
   const info = {

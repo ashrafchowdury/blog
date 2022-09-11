@@ -11,11 +11,11 @@ export const config = {
   dataset: "production", // or the name you chose in step 1
   useCdn: true, // `false` if you want to ensure fresh data
 };
-
+// "q1zq7tcr"
 
 //setup clients for fetching data in the getProps page funcion
 export const sanityClient = createClient(config);
 //genarating the Image url
 export const urlFor = (source) => imageUrlBuilder(config).image(source);
 //Helper function for usign the current logged in user account
-export const useCurrentUser = createCurrentUserHook(config)
+export const useCurrentUser = createCurrentUserHook(config);

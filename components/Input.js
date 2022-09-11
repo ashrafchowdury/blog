@@ -1,5 +1,6 @@
-import React from "react";
 
+
+//Forms Input Field
 export const Input = ({ name, input, value }) => {
   return (
     <>
