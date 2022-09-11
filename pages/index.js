@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Nav from "../components/Nav";
 import Social from "../components/Social";
 import Box from "../components/Box";
 import Footer from "../components/Footer";
 import { notification } from "../components/Toast";
-import { sanityClient, urlFor } from "../sanity";
+import { sanityClient } from "../sanity";
 
 export default function Home({ posts }) {
   const [email, setemail] = useState("");
-  const data = [1, 2, 3, 4, 5, 6, 7, 8];
+  const [data, setdata] = useState([]);
+
+  //Email Submitting
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email) {
@@ -18,6 +20,27 @@ export default function Home({ posts }) {
       setemail("");
     }
   };
+
+  //when page load all the blogs are showen
+  useEffect(() => {
+    setdata(posts);
+  }, []);
+
+  //sort blogs
+  const handleShort = (name) => {
+    //sort statement are empty
+    if (name !== "all") {
+      //sort the blogs
+      const short_data = posts.filter((value) => {
+        return value.categories[0].title.toLowerCase() == name.toLowerCase();
+      });
+      //if blogs are not found or blogs equal to 0
+      short_data?.length == 0 ? setdata("Not Found") : setdata(short_data);
+    } else {
+      setdata(posts);
+    }
+  };
+
   return (
     <>
       <Nav />
@@ -62,24 +85,33 @@ export default function Home({ posts }) {
           Latest Article
         </h2>
         <div className="cetagory flex items-center sm:justify-center overflow-auto h-16">
-          <button>React.js</button>
-          <button>Javascript</button>
-          <button>Next.js</button>
-          <button>Style</button>
-          <button>Firebase</button>
-          <button>Others</button>
+          <button onClick={() => handleShort("all")}>All</button>
+          <button onClick={() => handleShort("React.js")}>React.js</button>
+          <button onClick={() => handleShort("javascript")}>Javascript</button>
+          <button onClick={() => handleShort("next.js")}>Next.js</button>
+          <button onClick={() => handleShort("style")}>Style</button>
+          <button onClick={() => handleShort("firebase")}>Firebase</button>
+          <button onClick={() => handleShort("others")}>Others</button>
         </div>
       </section>
 
       {/********* Article Section ************/}
       <article className=" w-[90%] md:w-[700px] lg:w-[1000px] xl:w-[1400px] mx-auto flex justify-center flex-wrap">
-        {posts.map((value) => {
-          return (
-            <React.Fragment key={value._id}>
-              <Box {...value} />
-            </React.Fragment>
-          );
-        })}
+        {data == "Not Found" ? (
+          <h1 className=" text-xl md:text-2xl lg:text-3xl mb-12 font-bold">
+            {data}
+          </h1>
+        ) : (
+          <>
+            {data?.map((value) => {
+              return (
+                <React.Fragment key={value._id}>
+                  <Box {...value} />
+                </React.Fragment>
+              );
+            })}
+          </>
+        )}
       </article>
       <Footer />
     </>

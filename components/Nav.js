@@ -4,10 +4,10 @@ import { useAuth } from "../context/auth_context";
 import { useRouter } from "next/router";
 import { notification } from "../components/Toast";
 
-
 const Nav = () => {
   const [mood, setmood] = useState("dark");
   const [menu, setmenu] = useState("hidden");
+  const [search, setsearch] = useState("");
   const router = useRouter();
   const { logout, currentUser } = useAuth();
 
@@ -52,6 +52,15 @@ const Nav = () => {
     setmood("light");
   };
 
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (!search) {
+      router.push("/");
+    } else {
+      router.push(`/search/${search}`);
+    }
+  };
+
   return (
     <nav className=" w-[90%] sm:w-[480px] md:w-[700px] lg:w-[1000px] xl:w-[1250px] h-20 lg:h-28 flex items-center justify-between mx-auto">
       {/*********************Logo*****************************/}
@@ -84,14 +93,19 @@ const Nav = () => {
           </span>
         </div>
 
-        <div className=" w-[90%] relative mx-auto mt-4 mb-7 lg:hidden ">
+        <form
+          onSubmit={handleSearchSubmit}
+          className=" w-[90%] relative mx-auto mt-4 mb-7 lg:hidden "
+        >
           <i className="fa-solid fa-magnifying-glass text-lg absolute top-[5px] left-3 text-gray-400"></i>
           <input
             type="search"
             placeholder="Search Blogs"
             className=" w-full outline-none text-sm py-2 px-9 border rounded-md"
+            onChange={(e) => setsearch(e.target.value)}
+            value={search}
           />
-        </div>
+        </form>
 
         <div className="links">
           <Link href="/">Home</Link>
