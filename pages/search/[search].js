@@ -32,6 +32,7 @@ const search = ({ posts }) => {
 export default search;
 
 export const getServerSideProps = async () => {
+  //blog query
   const query = `*[_type == "post"]{
     _id,
     _createdAt,
@@ -42,8 +43,9 @@ export const getServerSideProps = async () => {
       title 
      },
   }`;
+  //call api
   const posts = await sanityClient.fetch(query);
-
+  //send the data to search page
   return {
     props: {
       posts,

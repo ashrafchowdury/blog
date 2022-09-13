@@ -1,23 +1,30 @@
+import { useState } from "react";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+//firebase firestore
 import { doc, collection, query, setDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
+//firebase auth
 import { useAuth } from "../../context/auth_context";
-import { useRouter } from "next/router";
+//componentes
 import { Input } from "../../components/Input";
 import Nav from "../../components/Nav";
 import { notification } from "../../components/Toast";
 
 const signup = () => {
+  //get the input fiield value
   const [input, setinput] = useState({
     name: "",
     email: "",
     password: "",
   });
+  //authentication functions
   const { signup, currentUser } = useAuth();
-  const router = useRouter();
+  //firestore query
   const q = query(collection(db, `userInfo`));
+  const router = useRouter();
 
+  //get the input value
   let value, name;
   const handleUserInput = (e) => {
     name = e.target.name;
@@ -25,21 +32,28 @@ const signup = () => {
     setinput({ ...input, [name]: value });
   };
 
+  //Submit Form data
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, email, password } = input;
+    //if the filed are empty then show the popup msg, othervise pass the data
     if (!name || !email || !password) {
       notification("warn", "Pleace Feel All The Filed");
     } else {
+      //catch the Errors
       try {
+        //send data to firestore
         await setDoc(doc(db, "userInfo", email), {
           uid: Math.floor(Math.random() * 900000000000000),
           name: name,
         });
+        //User Signup function
         await signup(email, password);
+        //Success notification
         notification("suc", "Sign Up Successfully");
         router.push("/");
       } catch (error) {
+        //show the Error message
         switch (error.code) {
           case "auth/weak-password":
             notification("error", "Week Paasword");
@@ -55,8 +69,6 @@ const signup = () => {
   return (
     <>
       <Nav />
-      <section></section>
-      <div></div>
       <section>
         <h1 className=" text-center font-bold uppercase text-2xl md:text-3xl lg:text-4xl xl:text-5xl mt-16 md:mt-24 lg:mt-32 mb-8 md:mb-16 lg:mb-20">
           Sign up
@@ -65,6 +77,7 @@ const signup = () => {
           onSubmit={handleSubmit}
           className=" w-[85%] sm:w-[80%] md:w-[400px] lg:w-[480px] mx-auto text-center"
         >
+          {/* This Custom Input field comes form the component folder  */}
           <Input name="name" input={handleUserInput} value={input.name} />
           <Input name="email" input={handleUserInput} value={input.email} />
           <Input

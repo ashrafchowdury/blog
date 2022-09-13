@@ -6,10 +6,12 @@ const search = () => {
   const router = useRouter();
 
   useEffect(() => {
+    //if the display size less then 1050px the search page push the user to home page
     window.innerWidth <= 1000 ? router.push("/") : null;
   }, []);
 
-  const handleSubmit = (e) => {
+  //Submit search data
+  const handleSearchSubmit = (e) => {
     e.preventDefault();
     if (!search) {
       router.push("/");
@@ -26,7 +28,7 @@ const search = () => {
         <i className="fa-solid fa-xmark text-xl lg:text-2xl text-white"></i>
       </button>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handleSearchSubmit}
         className=" w-[85%] md:w-[650px] lg:w-[850] xl:w-[950px] h-24 md:h-24 lg:h-28 xl:h-32 rounded-md bg-white dark:bg-[#253345] flex justify-center items-center mx-auto mt-32 lg:mt-40 mb-5 lg:mb-8 px-2 shadow-md"
       >
         <div className=" w-[85%] relative">

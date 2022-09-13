@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/************ Custom scroll bar *************/
 body::-webkit-scrollbar {
   width: 8px;
 }
@@ -14,6 +15,7 @@ body::-webkit-scrollbar-thumb {
   border-radius: 4px;
 }
 
+/************ Normal elements styles *************/
 @layer base {
   * {
     @apply font-["Lexend_Deca"];
@@ -35,35 +37,42 @@ body::-webkit-scrollbar-thumb {
     @apply text-gray-700 dark:text-white;
   }
 }
+
+/************ Compoenents style *************/
 @layer components {
+  /*** Social Median Icons **/
   .social {
     @apply flex justify-center;
   }
   .social a {
     @apply mx-2 md:mx-3 bg-white dark:bg-[#253345] text-lg md:text-xl lg:text-2xl w-9 md:w-10 lg:w-12 h-9 md:h-10 lg:h-12 rounded-full flex justify-center items-center hover:scale-125 duration-500;
   }
+
+  /*** Cetagory buttns **/
   .cetagory button {
     @apply mx-1 xl:mx-2 py-1 px-3 lg:px-4 rounded text-xs md:text-sm lg:text-[16px] xl:text-xl font-medium duration-700 hover:text-white dark:text-white;
   }
+
+  /*** Navbar links **/
   .links {
     @apply flex flex-col lg:flex-row w-[90%] lg:w-full mx-auto lg:mb-2;
   }
   .links a {
     @apply lg:mx-7 my-4 hover:scale-125 duration-700 font-semibold;
   }
+
+  /*** Nabvar icons hover effect **/
   .icon_hover {
     @apply mx-[6px] lg:mx-[8px] rounded duration-700 hover:bg-[#516bd530] cursor-pointer;
   }
+
+  /*** All buttons gradiants **/
   .gradiant_btn {
     @apply bg-gradient-to-r from-[#4F68D3] to-[#67C4F7] hover:to-[#4F68D3] duration-700 hover:scale-110;
   }
 }
 
-.cetagory button:hover {
-  background: linear-gradient(270deg, #66bef5 0%, #506bd5 100%);
-}
-
-/************************ This is for Blog Detaile Page **************************/
+/************************ This is for the Blog Detaile Page **************************/
 @layer components {
   .banner {
     @apply w-[90%] md:w-[700px] lg:w-[1000px] xl:w-[1050px]  md:h-[360px] lg:h-[500px] xl:h-[500px] object-cover mx-auto rounded;
@@ -113,9 +122,7 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-/* @layer utilities {
-} */
-
+/************ Gradiant Text *************/
 .gradiant_text {
   background: linear-gradient(90deg, #516cd5 4.25%, #67c2f6 100%);
   -webkit-background-clip: text;

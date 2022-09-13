@@ -1,30 +1,41 @@
-import Link from "next/link";
 import { useState } from "react";
-import { useAuth } from "../../context/auth_context";
+import Link from "next/link";
 import { useRouter } from "next/router";
+//firebase auth
+import { useAuth } from "../../context/auth_context";
+//components
 import { Input } from "../../components/Input";
 import Nav from "../../components/Nav";
 import { notification } from "../../components/Toast";
 
 const forget = () => {
+  //get the input fiield value
   const [input, setinput] = useState("");
+  //authentication functions
   const { forget } = useAuth();
   const router = useRouter();
 
+  //get the input value
   const handleUserInput = (e) => {
     return setinput(e.target.value);
   };
+
+  //Submit Form data
   const handleSubmit = async (e) => {
     e.preventDefault();
+    //if the filed are empty then show the popup msg, othervise pass the data
     if (!input) {
       notification("warn", "Pleace Write Your Email");
     } else {
+      //catch the Errors
       try {
+        //Data Forget function
         await forget(input);
-        notification("suc", "Forget Successfully");
+        //notification
         notification("warn", "Pleace Check Your Email");
         router.push("/user/login");
       } catch (error) {
+        //show the Error message
         switch (error.code) {
           case "auth/user-not-found":
             notification("error", "Email Not Found");

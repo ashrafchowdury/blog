@@ -1,6 +1,8 @@
 import React from "react";
 import Nav from "../components/Nav";
 import { useRouter } from "next/router";
+
+//Error Page
 const CustomError = () => {
   const router = useRouter();
   return (

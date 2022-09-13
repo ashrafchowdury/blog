@@ -1,19 +1,24 @@
-import Link from "next/link";
 import { useState } from "react";
-import { useAuth } from "../../context/auth_context";
+import Link from "next/link";
 import { useRouter } from "next/router";
+//firebase auth
+import { useAuth } from "../../context/auth_context";
+//components
 import { Input } from "../../components/Input";
 import Nav from "../../components/Nav";
 import { notification } from "../../components/Toast";
 
 const login = () => {
+  //get the input fiield value
   const [input, setinput] = useState({
     email: "",
     password: "",
   });
+  //authentication functions
   const { login, currentUser } = useAuth();
   const router = useRouter();
 
+  //get the input value
   let value, name;
   const handleUserInput = (e) => {
     name = e.target.name;
@@ -21,17 +26,23 @@ const login = () => {
     setinput({ ...input, [name]: value });
   };
 
+  //Submit Form data
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { email, password } = input;
+    //if the filed are empty then show the popup msg, othervise pass the data
     if (!email || !password) {
       notification("warn", "Pleace Feel All The Filed");
     } else {
+      //catch the Errors
       try {
+        //User Login function
         await login(email, password);
+        //Success notification
         notification("suc", "Log In Successfully");
         router.push("/");
       } catch (error) {
+        //show the Error message
         switch (error.code) {
           case "auth/wrong-password":
             notification("error", "Password Not Match");
@@ -47,8 +58,6 @@ const login = () => {
   return (
     <>
       <Nav />
-      <section></section>
-      <div></div>
       <section>
         <h1 className=" text-center font-bold uppercase text-2xl md:text-3xl lg:text-4xl xl:text-5xl mt-16 md:mt-24 lg:mt-32 mb-8 md:mb-16 lg:mb-20">
           Log In
@@ -57,6 +66,7 @@ const login = () => {
           onSubmit={handleSubmit}
           className=" w-[85%] sm:w-[80%] md:w-[400px] lg:w-[480px] mx-auto text-center"
         >
+          {/* This Custom Input field comes form the component folder  */}
           <Input name="email" input={handleUserInput} value={input.email} />
           <Input
             name="password"

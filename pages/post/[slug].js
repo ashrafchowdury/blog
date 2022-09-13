@@ -50,8 +50,12 @@ const Post = ({
   return (
     <>
       <Nav />
+      {/* Main Image */}
       <img src={urlFor(mainImage).url()} alt="image" className="banner" />
+
+      {/***************** Artical Section ************************/}
       <article className="blog">
+        {/* publishing data and user Info */}
         <div className="auth_publish">
           <span className="auth">
             <img src={urlFor(author.image).url()} alt="image" />{" "}
@@ -63,8 +67,10 @@ const Post = ({
           </span>
         </div>
 
+        {/* Main Title */}
         <h1>{title}</h1>
 
+        {/* All the other text comes from this PortableText */}
         <PortableText
           dataset="production"
           projectId="q1zq7tcr"
@@ -72,11 +78,15 @@ const Post = ({
           components={displayImage}
         />
       </article>
+
+      {/***************** Suggusted Section ************************/}
+      
       <h3 className="w-[90%] sm:w-[85%] md:w-[700px] lg:w-[1000px] xl:w-[1050px] mx-auto text-[22px] md:text-[25px] lg:text-4xl uppercase font-bold pl-3 mb-4 lg:mb-5">
         {" "}
         Suggested
       </h3>
       <section className="w-[90%] sm:w-[85%] md:w-[700px] lg:w-[1000px] xl:w-[1050px] mx-auto flex justify-start flex-wrap">
+        {/* Filter the suggested blogs acording to there cetagory */}
         {suggested_post
           ?.filter((value) => {
             return value.categories[0].title == categories[0].title;
@@ -100,6 +110,7 @@ export default Post;
 
 //genarating blog path
 export async function getStaticPaths() {
+  //query
   const query = `*[_type == "post"]{
       _id,
       slug {
@@ -120,10 +131,9 @@ export async function getStaticPaths() {
   };
 }
 
-//get the blog
-
+//get the blogdata
 export async function getStaticProps({ params }) {
-  //bolg query
+  //bolg post query
   const query = `*[_type == "post" && slug.current == $slug][0]{
     _id,
     _createdAt,
@@ -141,7 +151,7 @@ export async function getStaticProps({ params }) {
       image
      },
   }`;
-  //
+  //blog query
   const suggested_query = `*[_type == "post"]{
     _id,
     _createdAt,
@@ -156,9 +166,10 @@ export async function getStaticProps({ params }) {
   const post = await sanityClient.fetch(query, {
     slug: params?.slug,
   });
-  //
+  //call the api
   const suggested_post = await sanityClient.fetch(suggested_query);
 
+  //send data to post page
   return {
     props: {
       ...post,
