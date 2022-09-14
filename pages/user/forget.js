@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Head from "next/head";
 //firebase auth
 import { useAuth } from "../../context/auth_context";
 //components
@@ -47,6 +48,11 @@ const forget = () => {
 
   return (
     <>
+      {/***************** Head section for SEO ****************************/}
+      <Head>
+        <title>Forget Password</title>
+      </Head>
+
       <Nav />
 
       <section>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 //compoenents
 import Nav from "../components/Nav";
 import Social from "../components/Social";
@@ -53,12 +54,13 @@ export default function Home({ posts }) {
           Welcome
         </p>
         <h1 className=" capitalize my-4 text-[22px] sm:text-3xl md:text-[42px] lg:text-5xl xl:text-[55px] sm:leading-[45px] md:leading-[60px] lg:leading-[70px] xl:leading-[78px] font-semibold">
-          Learn The Fundametals of <br /> a Developement
+          Learn The Fundametals of <br /> Web Developement
         </h1>
         <p className=" text-sm md:text-[16px] xl:text-xl md:w-11/12 lg:w-5/6 xl:w-[950px] md:mx-auto leading-6 md:leading-8 xl:leading-10 break-all">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid vel,
-          voluptatibus nostrum debitis culpa quis porro fugit ex delectus saepe,
-          perferendis id minus sunt et.
+          Learn the fundamental of web development with us, we are here to teach
+          you the best way to learn web development, we post blogs every week
+          regarding web development, and you can subscribe to our weekly
+          newsletter to learn new technologies.
         </p>
         <form
           onSubmit={handleEmailSubmit}
@@ -73,7 +75,10 @@ export default function Home({ posts }) {
               onChange={(e) => setemail(e.target.value)}
               value={email}
             />
-            <button className="gradiant_btn absolute right-0 text-sm lg:text-[16px] font-bold text-white py-[12.8px] lg:py-[16.8px] px-3 md:px-4 lg:px-6 rounded-r">
+            <button
+              className="gradiant_btn absolute right-0 text-sm lg:text-[16px] font-bold text-white py-[13px] lg:py-[16.8px] px-3 md:px-4 lg:px-6 rounded-r"
+              title="Subscribe"
+            >
               Subscribe
             </button>
           </div>
@@ -82,7 +87,10 @@ export default function Home({ posts }) {
       </header>
 
       {/********* Cetagory Section ************/}
-      <section className=" w-[90%] md:w-[700px] lg:w-[1000px] mx-auto mb-5 xl:mb-8 lg:mt-24">
+      <section
+        className=" w-[90%] md:w-[700px] lg:w-[1000px] mx-auto mb-5 xl:mb-8 lg:mt-24"
+        id="blogs"
+      >
         <h2 className=" text-3xl md:text-4xl lg:text-[42px] xl:text-5xl font-bold text-center mb-2 xl:mb-4">
           Latest Article
         </h2>

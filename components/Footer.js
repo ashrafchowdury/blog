@@ -1,15 +1,19 @@
 import React, { Component } from "react";
 import Social from "./Social";
 
+
 export class Footer extends Component {
   render() {
     return (
       <>
         {/********* Auther Section ************/}
-        <section className=" py-6 lg:py-8 mt-9 xl:mt-20 mb-6 lg:mb-9 w-[90%] md:w-[700px] lg:w-[800px] xl:w-[1000px] mx-auto border-y-2  flex flex-col lg:flex-row lg:justify-center lg:items-center text-center lg:text-start">
+        <section
+          className=" py-6 lg:py-8 mt-9 xl:mt-20 mb-6 lg:mb-9 w-[90%] md:w-[700px] lg:w-[800px] xl:w-[1000px] mx-auto border-y-2  flex flex-col lg:flex-row lg:justify-center lg:items-center text-center lg:text-start"
+          id="auther"
+        >
           <img
             src="/ashraf.png"
-            alt="image"
+            alt="Ashraf Chowdury"
             className=" w-[110px] h-[110px] lg:w-60 lg:h-[265px] object-cover rounded-full lg:rounded mx-auto lg:mx-0 lg:mr-9 mb-3"
           />
           <div className=" lg:w-[500px]">
@@ -17,16 +21,21 @@ export class Footer extends Component {
               Hi, I’m Ashraf Chowdury.
             </h3>
             <p className=" md:w-10/12 lg:w-[500px] xl:w-[550px] md:mx-auto lg:mx-0 text-sm md:text-[16px] leading-6 md:leading-7 break-all mb-3">
-              Lorem ipsum dolor sit amet consectetur amet, adipisicing elit.
-              Quis, cupiditate dolor. Provident, sit!
+              Hi, I'm Ashraf. I'm a Front-end web developer and Technical
+              writer. I'm a developer because building stuff fulfills my
+              creative portfolio, and writing makes me more creative.
             </p>
 
             <p className=" md:w-10/12 lg:w-[500px] xl:w-[550px] md:mx-auto lg:mx-0 text-sm md:text-[16px] leading-6 md:leading-7 mb-5 md:mb-9 break-all">
-              Lorem ipsum dolor sit amet consectetur amet, adipisicing elit.
-              Quis, cupiditate dolor. Provident, sit!
+              I post blogs weekly regarding web development; you can subscribe
+              to my weekly newsletter to stay up to date.
             </p>
 
-            <a href="" className=" block text-blue-500 font-bold">
+            <a
+              href="/"
+              title="View Ashraf's Portfolio"
+              className=" block text-blue-500 font-bold"
+            >
               View Portfolio{" "}
               <i className="fa-solid fa-arrow-right-long ml-2 text-blue-500"></i>
             </a>

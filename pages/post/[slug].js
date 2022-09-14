@@ -1,9 +1,9 @@
 import React from "react";
+import Head from "next/head";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import { PortableText } from "@portabletext/react";
 import { sanityClient, urlFor } from "../../sanity";
-import { useRouter } from "next/router";
 import { notification } from "../../components/Toast";
 import Box from "../../components/Box";
 
@@ -21,6 +21,7 @@ const displayImage = {
         />
       );
     },
+    //stracting code-block from sanity
     code: ({ value }) => {
       const handleCode = () => {
         //copy text
@@ -45,10 +46,15 @@ const Post = ({
   body,
   categories,
   suggested_post,
+  description,
 }) => {
-  const router = useRouter();
   return (
     <>
+      {/***************** Head section for SEO ****************************/}
+      <Head>
+        <title>{title}</title>
+        <meta name="description" content={description ?? ""} />
+      </Head>
       <Nav />
       {/* Main Image */}
       <img src={urlFor(mainImage).url()} alt="image" className="banner" />
@@ -58,7 +64,7 @@ const Post = ({
         {/* publishing data and user Info */}
         <div className="auth_publish">
           <span className="auth">
-            <img src={urlFor(author.image).url()} alt="image" />{" "}
+            <img src={urlFor(author.image).url()} alt={title} />{" "}
             <p>{author.name}</p>
           </span>
           <span className="time">
@@ -80,7 +86,7 @@ const Post = ({
       </article>
 
       {/***************** Suggusted Section ************************/}
-      
+
       <h3 className="w-[90%] sm:w-[85%] md:w-[700px] lg:w-[1000px] xl:w-[1050px] mx-auto text-[22px] md:text-[25px] lg:text-4xl uppercase font-bold pl-3 mb-4 lg:mb-5">
         {" "}
         Suggested

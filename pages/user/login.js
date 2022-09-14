@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import Head from "next/head";
 import { useRouter } from "next/router";
 //firebase auth
 import { useAuth } from "../../context/auth_context";
@@ -57,6 +58,10 @@ const login = () => {
 
   return (
     <>
+      {/***************** Head section for SEO ****************************/}
+      <Head>
+        <title>Login on Roadmap</title>
+      </Head>
       <Nav />
       <section>
         <h1 className=" text-center font-bold uppercase text-2xl md:text-3xl lg:text-4xl xl:text-5xl mt-16 md:mt-24 lg:mt-32 mb-8 md:mb-16 lg:mb-20">
@@ -75,7 +80,7 @@ const login = () => {
           />
 
           <p className=" text-sm md:text-[16px] flex justify-between items-center mt-2">
-            <Link href="/login">
+            <Link href="/user/signup">
               <span className=" cursor-pointer"> Create Account</span>
             </Link>
             <Link href="/user/forget">

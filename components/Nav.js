@@ -40,6 +40,10 @@ const Nav = () => {
     handleDark();
   }, [mood]);
 
+  // useEffect(() => {
+
+  // }, [])
+
   //Handle User Logout
   const handleLogout = () => {
     logout();
@@ -77,7 +81,7 @@ const Nav = () => {
       {/********************* Logo *****************************/}
       <Link href="/">
         <div className=" flex items-center cursor-pointer">
-          <img src="/logo.svg" alt="image" className=" w-6 xl:w-9" />
+          <img src="/logo.svg" alt="Roadmap" className=" w-6 xl:w-9" />
           <h1 className=" font-['Righteous'] text-2xl xl:text-4xl ml-2 font-bold">
             Roadmap
           </h1>
@@ -91,7 +95,7 @@ const Nav = () => {
         {/************************ Mobile Menu Logo | hide on desktop ***************************/}
         <div className=" w-[90%] mx-auto flex justify-between items-center mt-6">
           <div className=" flex items-center lg:hidden">
-            <img src="/logo.svg" alt="image" className=" w-5" />
+            <img src="/logo.svg" alt="Roadmap" className=" w-5" />
             <h1 className=" font-['Righteous'] text-xl ml-2 font-bold">
               Roadmap
             </h1>
@@ -121,14 +125,16 @@ const Nav = () => {
         {/************************ Links ***************************/}
         <div className="links">
           <Link href="/">Home</Link>
-          <Link href="/">Blogs</Link>
-          <Link href="/">About Me</Link>
+          <Link href="#blogs">Blogs</Link>
+          <Link href="#auther">About Me</Link>
           <Link href="/">Donate</Link>
         </div>
         {/************************ Mobile Menu Signup Button | hide on desktop ***************************/}
-        <button className="gradiant_btn lg:hidden absolute bottom-3 left-[50%] translate-x-[-50%] w-[90%] py-2 rounded font-bold text-sm text-white">
-          Sign Up
-        </button>
+        <Link href="/user/signup">
+          <button className="gradiant_btn lg:hidden absolute bottom-3 left-[50%] translate-x-[-50%] w-[90%] py-2 rounded font-bold text-sm text-white">
+            Sign Up
+          </button>
+        </Link>
       </section>
 
       {/**************************** Button & icons ********************************/}
@@ -143,6 +149,7 @@ const Nav = () => {
         {/** if theme equal to dark then show sun icon other vise show the moon icon **/}
         {mood == "dark" ? (
           <span
+            title="Light Mood"
             className="icon_hover py-[5px] px-[10px]"
             onClick={() => handleLightTheme()}
           >
@@ -150,6 +157,7 @@ const Nav = () => {
           </span>
         ) : (
           <span
+            title="Dark Mood"
             className="icon_hover py-[3px] px-[8px] lg:py-[6px] lg:px-[10px]"
             onClick={() => handleDarkTheme()}
           >

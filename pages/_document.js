@@ -43,7 +43,11 @@ export default function Document() {
         <link rel="manifest" href="/site.webmanifest" />
 
         {/**************** Title **********/}
-        <title>Learn Something New</title>
+        <title>Learn The Fundametals of Web Developement on Roadmap</title>
+        <meta
+          name="description"
+          content="Learn the fundamental of web development with us, we are here to teach you the best way to learn web development, we post blogs every week regarding web development"
+        />
       </Head>
       <body>
         <Main />
