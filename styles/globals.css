@@ -58,7 +58,7 @@ body::-webkit-scrollbar-thumb {
     @apply flex flex-col lg:flex-row w-[90%] lg:w-full mx-auto lg:mb-4;
   }
   .links a {
-    @apply lg:mx-7 my-4 hover:scale-125 duration-700 font-semibold;
+    @apply lg:mx-7 my-4 lg:hover:scale-125 duration-700 font-semibold;
   }
 
   /*** Nabvar icons hover effect **/

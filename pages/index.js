@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 //compoenents
 import Nav from "../components/Nav";
 import Social from "../components/Social";
@@ -8,6 +7,9 @@ import Footer from "../components/Footer";
 import { notification } from "../components/Toast";
 //sanity
 import { sanityClient } from "../sanity";
+//Firebase
+import { db } from "../firebase/firebase";
+import { setDoc, doc } from "firebase/firestore";
 
 export default function Home({ posts }) {
   const [email, setemail] = useState("");
@@ -19,8 +21,20 @@ export default function Home({ posts }) {
     if (!email) {
       notification("warn", "Pleace Write Your Email");
     } else {
-      notification("suc", "Subscribe Successfully");
-      setemail("");
+      //add user email on Firestore
+      setDoc(doc(db, "subscribers", email), {
+        email,
+      })
+        .then(() => {
+          //Show Success Message
+          notification("suc", "Subscribe Successfully");
+          setemail("");
+        })
+        .catch((error) => {
+          //if something was rong, then show the Error Message
+          notification("wanr", error?.message);
+          console.log(error);
+        });
     }
   };
 

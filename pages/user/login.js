@@ -62,6 +62,8 @@ const login = () => {
       <Head>
         <title>Login on Roadmap</title>
       </Head>
+      {/* If current use are login, then send theme back to thier previous page */}
+
       <Nav />
       <section>
         <h1 className=" text-center font-bold uppercase text-2xl md:text-3xl lg:text-4xl xl:text-5xl mt-16 md:mt-24 lg:mt-32 mb-8 md:mb-16 lg:mb-20">

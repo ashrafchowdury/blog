@@ -40,10 +40,6 @@ const Nav = () => {
     handleDark();
   }, [mood]);
 
-  // useEffect(() => {
-
-  // }, [])
-
   //Handle User Logout
   const handleLogout = () => {
     logout();
@@ -65,7 +61,7 @@ const Nav = () => {
     setmood("light");
   };
 
-  //Handle the blogs search
+  //Handle the blogs search For Mobiles
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     if (!search) {
@@ -77,7 +73,7 @@ const Nav = () => {
   };
 
   return (
-    <nav className=" w-[90%] sm:w-[480px] md:w-[700px] lg:w-[1000px] xl:w-[1250px] h-20 lg:h-28 flex items-center justify-between mx-auto">
+    <nav className=" w-[90%] sm:w-[480px] md:w-[700px] lg:w-[1000px] xl:w-[1250px] h-20 md:h-24 lg:h-28 flex items-center justify-between mx-auto">
       {/********************* Logo *****************************/}
       <Link href="/">
         <div className=" flex items-center cursor-pointer">
@@ -130,11 +126,20 @@ const Nav = () => {
           <Link href="/">Donate</Link>
         </div>
         {/************************ Mobile Menu Signup Button | hide on desktop ***************************/}
-        <Link href="/user/signup">
-          <button className="gradiant_btn lg:hidden absolute bottom-3 left-[50%] translate-x-[-50%] w-[90%] py-2 rounded font-bold text-sm text-white">
-            Sign Up
+        {currentUser?.email ? (
+          <button
+            onClick={handleLogout}
+            className="gradiant_btn lg:hidden absolute bottom-3 left-[50%] translate-x-[-50%] w-[90%] py-2 rounded font-bold text-sm text-white"
+          >
+            Log Out
           </button>
-        </Link>
+        ) : (
+          <Link href="/user/signup">
+            <button className="gradiant_btn lg:hidden absolute bottom-3 left-[50%] translate-x-[-50%] w-[90%] py-2 rounded font-bold text-sm text-white">
+              Sign Up
+            </button>
+          </Link>
+        )}
       </section>
 
       {/**************************** Button & icons ********************************/}
@@ -150,6 +155,7 @@ const Nav = () => {
         {mood == "dark" ? (
           <span
             title="Light Mood"
+            id="themeSun"
             className="icon_hover py-[5px] px-[10px]"
             onClick={() => handleLightTheme()}
           >
@@ -158,6 +164,7 @@ const Nav = () => {
         ) : (
           <span
             title="Dark Mood"
+            id="themeMoon"
             className="icon_hover py-[3px] px-[8px] lg:py-[6px] lg:px-[10px]"
             onClick={() => handleDarkTheme()}
           >

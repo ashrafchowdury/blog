@@ -20,6 +20,7 @@ const AuthContextProvider = ({ children }) => {
   //store user data
   const [currentUser, setcurrentUser] = useState("");
 
+
   //Subscribing the current user
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -29,6 +30,8 @@ const AuthContextProvider = ({ children }) => {
       unsubscribe();
     };
   }, []);
+
+
 
   //Firebase Signup function
   const signup = (email, password) => {
@@ -41,7 +44,7 @@ const AuthContextProvider = ({ children }) => {
   //Firebase Forget password function
   const forget = (email) => {
     return sendPasswordResetEmail(auth, email, {
-      url: "http://localhost:3000/login",
+      url: "http://localhost:3000/user/login",
     });
   };
   //Firebase Logout function

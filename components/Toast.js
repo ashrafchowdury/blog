@@ -7,7 +7,7 @@ export const notification = (msg, title) => {
   //position is notification position, autoClose is notification closing time
   const info = {
     position: toast.POSITION.TOP_CENTER,
-    autoClose: 3000,
+    autoClose: 2000,
   };
   // warn is notification type,
   if (msg == "warn") {

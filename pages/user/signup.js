@@ -76,6 +76,7 @@ const signup = () => {
           content="Sign Up Roadmap to learn something new every day"
         />
       </Head>
+
       <Nav />
       <section>
         <h1 className=" text-center font-bold uppercase text-2xl md:text-3xl lg:text-4xl xl:text-5xl mt-16 md:mt-24 lg:mt-32 mb-8 md:mb-16 lg:mb-20">
@@ -96,7 +97,7 @@ const signup = () => {
 
           <p className=" text-sm md:text-[16px] flex justify-between items-center mt-2">
             <Link href="/user/login">
-              <span> Have an Account: Log in</span>
+              <span className=" cursor-pointer"> Have an Account: Log in</span>
             </Link>
           </p>
 
