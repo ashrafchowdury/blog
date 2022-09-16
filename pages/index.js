@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 //compoenents
 import Nav from "../components/Nav";
 import Social from "../components/Social";
@@ -60,6 +61,14 @@ export default function Home({ posts }) {
 
   return (
     <>
+      {/***************** Head section for SEO ****************************/}
+      <Head>
+        <title>Learn The Fundametals of Web Developement on Roadmap</title>
+        <meta
+          name="description"
+          content="Learn the fundamental of web development with us, we are here to teach you the best way to learn web development, we post blogs every week regarding web development"
+        />
+      </Head>
       <Nav />
 
       {/********* Header Section ************/}

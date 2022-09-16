@@ -11,7 +11,7 @@ export const config = {
   dataset: "production", // or the name you chose in step 1
   useCdn: true, // `false` if you want to ensure fresh data
 };
-// "q1zq7tcr"
+
 
 //setup clients for fetching data in the getProps page funcion
 export const sanityClient = createClient(config);
