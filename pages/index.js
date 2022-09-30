@@ -123,7 +123,8 @@ export default function Home({ posts }) {
           <button onClick={() => handleShort("javascript")}>Javascript</button>
           <button onClick={() => handleShort("next.js")}>Next.js</button>
           <button onClick={() => handleShort("style")}>Style</button>
-          <button onClick={() => handleShort("firebase")}>Firebase</button>
+          <button onClick={() => handleShort("backend")}>Back-End</button>
+          <button onClick={() => handleShort("testing")}>Testing</button>
           <button onClick={() => handleShort("others")}>Others</button>
         </div>
       </section>

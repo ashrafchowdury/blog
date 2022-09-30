@@ -57,7 +57,9 @@ const Post = ({
       </Head>
       <Nav />
       {/* Main Image */}
-      <img src={urlFor(mainImage).url()} alt="image" className="banner" />
+      {mainImage && (
+        <img src={urlFor(mainImage).url()} alt="image" className="banner" />
+      )}
 
       {/***************** Artical Section ************************/}
       <article className="blog">
@@ -133,7 +135,7 @@ export async function getStaticPaths() {
   }));
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 }
 
@@ -184,5 +186,3 @@ export async function getStaticProps({ params }) {
     revalidate: 60, //after 60 send it will update the old cached version
   };
 }
-
-//

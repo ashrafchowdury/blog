@@ -32,7 +32,8 @@ export class Footer extends Component {
             </p>
 
             <a
-              href="/"
+              href="http://ashrafchowdury.vercel.app/"
+              target='_blank'
               title="View Ashraf's Portfolio"
               className=" block text-blue-500 font-bold"
             >

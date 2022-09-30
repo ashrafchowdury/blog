@@ -123,7 +123,7 @@ const Nav = () => {
           <Link href="/">Home</Link>
           <Link href="#blogs">Blogs</Link>
           <Link href="#auther">About Me</Link>
-          <Link href="/">Donate</Link>
+          <Link href="/">View Portfolio</Link>
         </div>
         {/************************ Mobile Menu Signup Button | hide on desktop ***************************/}
         {currentUser?.email ? (

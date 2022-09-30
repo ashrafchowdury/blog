@@ -2,7 +2,7 @@
 
 # Blog Application
 
-This is my personal Blog application. I create this project using Javascript and Next.js. I use this blog as a playground for my React skills and to learn more about Next.js and Sanity CMS.
+This is my personal Blog application. I create this project using Javascript and Next.js. I use this blog as a playground for my React skills and to learn more about Next.js, Sanity CMS and Firebase.
 
 ## 🛠 Use To Built
 
@@ -23,6 +23,7 @@ This is my personal Blog application. I create this project using Javascript and
 - Light / Dark mode toggle
 - Fully Responsive
 - Cross platform
+- Authentication
 
 ## 🚀 About Me
 
