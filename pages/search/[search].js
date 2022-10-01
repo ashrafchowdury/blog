@@ -3,8 +3,6 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { sanityClient } from "../../sanity";
 import Box from "../../components/Box";
-import Footer from "../../components/Footer";
-import Nav from "../../components/Nav";
 
 const search = ({ posts }) => {
   const router = useRouter();
@@ -16,7 +14,7 @@ const search = ({ posts }) => {
       <Head>
         <title>{search}</title>
       </Head>
-      <Nav />
+
       <h1 className="text-3xl md:text-4xl lg:text-[42px] xl:text-5xl font-bold text-center mb-8 lg:mb-16 mt-12 lg:mt-24 uppercase">
         Blogs
       </h1>
@@ -29,7 +27,6 @@ const search = ({ posts }) => {
           );
         })}
       </article>
-      <Footer />
     </>
   );
 };

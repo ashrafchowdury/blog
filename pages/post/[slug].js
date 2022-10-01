@@ -1,7 +1,5 @@
 import React from "react";
 import Head from "next/head";
-import Nav from "../../components/Nav";
-import Footer from "../../components/Footer";
 import { PortableText } from "@portabletext/react";
 import { sanityClient, urlFor } from "../../sanity";
 import { notification } from "../../components/Toast";
@@ -55,7 +53,7 @@ const Post = ({
         <title>{title}</title>
         <meta name="description" content={description ?? ""} />
       </Head>
-      <Nav />
+
       {/* Main Image */}
       {mainImage && (
         <img src={urlFor(mainImage).url()} alt="image" className="banner" />
@@ -108,8 +106,6 @@ const Post = ({
             );
           })}
       </section>
-
-      <Footer />
     </>
   );
 };

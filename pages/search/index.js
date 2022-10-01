@@ -27,7 +27,7 @@ const search = () => {
         <title>Search Blogs</title>
       </Head>
 
-      <section>
+      <section className=" mb-32">
         <button
           className=" absolute top-16 right-16 lg:right-24 py-1 px-3 lg:py-2 lg:px-4 bg-red-400  rounded"
           onClick={() => router.back()}

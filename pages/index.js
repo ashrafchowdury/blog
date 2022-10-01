@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 //compoenents
-import Nav from "../components/Nav";
 import Social from "../components/Social";
 import Box from "../components/Box";
-import Footer from "../components/Footer";
 import { notification } from "../components/Toast";
 //sanity
 import { sanityClient } from "../sanity";
@@ -69,7 +67,7 @@ export default function Home({ posts }) {
           content="Learn the fundamental of web development with us, we are here to teach you the best way to learn web development, we post blogs every week regarding web development"
         />
       </Head>
-      <Nav />
+
 
       {/********* Header Section ************/}
       <header className=" w-[95%] sm:w-[480px] md:w-[700px] lg:w-[1000px] xl:w-[1400px] mx-auto text-center my-14 xl:mt-24">
@@ -149,7 +147,7 @@ export default function Home({ posts }) {
         )}
       </article>
 
-      <Footer />
+
     </>
   );
 }

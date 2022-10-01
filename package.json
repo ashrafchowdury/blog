@@ -12,6 +12,7 @@
   "dependencies": {
     "@portabletext/react": "^1.0.6",
     "@sanity/image-url": "^1.0.1",
+    "aos": "^2.3.4",
     "firebase": "^9.9.4",
     "next": "12.2.5",
     "next-sanity": "^0.8.4",
