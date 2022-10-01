@@ -20,8 +20,9 @@ body::-webkit-scrollbar-thumb {
   * {
     @apply font-["Lexend_Deca"] scroll-smooth;
   }
+  /* Lexend_Deca */
   body {
-    @apply bg-[#f1f3ff] dark:bg-[#1B2430];
+    @apply bg-[#f1f3ff] dark:bg-[#1B2430] overflow-x-hidden;
   }
   body {
     @apply:: -webkit-scrollbar-thumb;
@@ -124,7 +125,7 @@ body::-webkit-scrollbar-thumb {
 
 /************ Gradiant Text *************/
 .gradiant_text {
-  background: linear-gradient(90deg, #516cd5 4.25%, #67c2f6 100%);
+  background: linear-gradient(90deg, #375BE7 4.25%, #7ECEFB 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

@@ -16,7 +16,7 @@ const Box = ({ title, mainImage, slug, _id, _createdAt, categories }) => {
           <span>{categories[0]?.title || "Web Development"}</span>{" "}
           <span>{new Date(_createdAt).toLocaleString()}</span>
         </p>
-        <h1 className=" text-xl lg:text-2xl font-bold mt-2 lg:mt-3 mb-1">
+        <h1 className=" text-xl lg:text-2xl font-medium mt-2 lg:mt-3 mb-1">
           {title}
         </h1>
       </div>

@@ -118,6 +118,8 @@ const Nav = () => {
             value={search}
           />
         </form>
+
+
         {/************************ Links ***************************/}
         <div className="links">
           <Link href="/">Home</Link>
@@ -127,6 +129,8 @@ const Nav = () => {
             Portfolio
           </a>
         </div>
+
+
         {/************************ Mobile Menu Signup Button | hide on desktop ***************************/}
         {currentUser?.email ? (
           <button
@@ -143,6 +147,7 @@ const Nav = () => {
           </Link>
         )}
       </section>
+
 
       {/**************************** Button & icons ********************************/}
       <div className=" flex items-center">
@@ -196,7 +201,7 @@ const Nav = () => {
         {/******** These all Button are hide on the Mobile section ******/}
         {router.pathname == "/user/signup" ? (
           <Link href="/user/login">
-            <button className="gradiant_btn hidden lg:block lg:py-2 lg:px-6 lg:rounded lg:uppercase lg:font-bold lg:text-white">
+            <button className="gradiant_btn hidden lg:block lg:py-2 lg:px-6 lg:ml-4 lg:rounded lg:uppercase lg:font-bold lg:text-white">
               Log in
             </button>
           </Link>
@@ -206,13 +211,13 @@ const Nav = () => {
             {currentUser?.email ? (
               <button
                 onClick={handleLogout}
-                className="gradiant_btn hidden lg:block lg:py-2 lg:px-6 lg:rounded lg:uppercase lg:font-bold lg:text-white"
+                className="gradiant_btn hidden lg:block lg:py-2 lg:px-6 lg:ml-4 lg:rounded lg:uppercase lg:font-bold lg:text-white"
               >
                 Log Out
               </button>
             ) : (
               <Link href="/user/signup">
-                <button className="gradiant_btn hidden lg:block lg:py-2 lg:px-6 lg:rounded lg:uppercase lg:font-bold lg:text-white">
+                <button className="gradiant_btn hidden lg:block lg:py-2 lg:px-6 lg:ml-4 lg:rounded lg:uppercase lg:font-bold lg:text-white">
                   Sign Up
                 </button>
               </Link>
