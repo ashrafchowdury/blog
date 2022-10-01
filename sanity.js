@@ -9,6 +9,7 @@ import imageUrlBuilder from "@sanity/image-url";
 export const config = {
   projectId: "q1zq7tcr", // you can find this in sanity.json
   dataset: "production", // or the name you chose in step 1
+  apiVersion: "2021-10-21", // use a UTC date string
   useCdn: true, // `false` if you want to ensure fresh data
 };
 

@@ -76,10 +76,10 @@ export default function Home({ posts }) {
         <p className="gradiant_text text-5xl md:text-[75px] lg:text-[98px] xl:text-[110px] font-bold lg:mb-7">
           Welcome
         </p>
-        <h1 className=" capitalize my-4 text-[22px] sm:text-3xl md:text-[42px] lg:text-5xl xl:text-[55px] sm:leading-[45px] md:leading-[60px] lg:leading-[70px] xl:leading-[78px] font-semibold">
+        <h1 className=" capitalize my-4 text-[22px] sm:text-3xl md:text-[42px] lg:text-5xl xl:text-[55px] sm:leading-[45px] md:leading-[60px] lg:leading-[70px] xl:leading-[78px] font-normal">
           Learn The Fundametals of <br /> Web Developement
         </h1>
-        <p className=" text-sm md:text-[16px] xl:text-xl md:w-11/12 lg:w-5/6 xl:w-[950px] md:mx-auto leading-6 md:leading-8 xl:leading-10 break-all">
+        <p className=" text-sm md:text-[16px] xl:text-xl md:w-11/12 lg:w-5/6 xl:w-[1150px] md:mx-auto leading-6 md:leading-8 xl:leading-10 break-all">
           Learn the fundamental of web development with us, we are here to teach
           you the best way to learn web development, we post blogs every week
           regarding web development, and you can subscribe to our weekly

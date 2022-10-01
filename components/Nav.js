@@ -123,7 +123,9 @@ const Nav = () => {
           <Link href="/">Home</Link>
           <Link href="#blogs">Blogs</Link>
           <Link href="#auther">About Me</Link>
-          <Link href="/">View Portfolio</Link>
+          <a href="http://ashrafchowdury.vercel.app/" target="_blank">
+            Portfolio
+          </a>
         </div>
         {/************************ Mobile Menu Signup Button | hide on desktop ***************************/}
         {currentUser?.email ? (
@@ -176,23 +178,17 @@ const Nav = () => {
         {/** if theme equal to dark then show light menu icon other vise show the dark menu icon **/}
         {mood == "dark" ? (
           <span
-            className="icon_hover py-[4px] px-[8px]"
+            className="icon_hover py-[4px] px-[8px] lg:hidden"
             onClick={() => setmenu("block")}
           >
-            <img
-              src="/darkMenu.svg"
-              className=" w-[22px] md:w-[24px] py-[5px] lg:hidden"
-            />
+            <i className="fa-solid fa-bars text-white text-lg md:text-xl"></i>
           </span>
         ) : (
           <span
-            className="icon_hover py-[4px] px-[8px]"
+            className="icon_hover py-[4px] px-[8px] lg:hidden"
             onClick={() => setmenu("block")}
           >
-            <img
-              src="/menu.svg"
-              className=" w-[22px] md:w-[24px] py-[5px] lg:hidden"
-            />
+            <i className="fa-solid fa-bars text-lg md:text-xl"></i>
           </span>
         )}
 
