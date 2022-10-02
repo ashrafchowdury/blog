@@ -45,6 +45,7 @@ const Nav = () => {
     logout();
     notification("suc", "Log Out Successfully");
     router.push("/");
+    setmenu("hidden");
   };
 
   //handle Dark Mood
@@ -72,6 +73,10 @@ const Nav = () => {
     }
   };
 
+  //when click menu links the menu hide automatically
+  const handleMenuOf = () => {
+    window.innerWidth >= 1050 ? setmenu("") : setmenu("hidden");
+  };
   return (
     <nav className=" w-[90%] sm:w-[480px] md:w-[700px] lg:w-[1000px] xl:w-[1250px] h-20 md:h-24 lg:h-28 flex items-center justify-between mx-auto">
       {/********************* Logo *****************************/}
@@ -107,7 +112,7 @@ const Nav = () => {
         {/************************ Mobile Menu Search bar | hide on desktop ***************************/}
         <form
           onSubmit={handleSearchSubmit}
-          className=" w-[90%] relative mx-auto mt-4 mb-7 lg:hidden "
+          className=" w-[90%] relative mx-auto mt-4 mb-7 lg:hidden"
         >
           <i className="fa-solid fa-magnifying-glass text-lg absolute top-[5px] left-3 text-gray-400"></i>
           <input
@@ -121,29 +126,38 @@ const Nav = () => {
 
         {/************************ Links ***************************/}
         <div className="links">
-          <Link href="/">Home</Link>
-          <Link href="#blogs">Blogs</Link>
-          <Link href="/#auther">About Me</Link>
-          <a href="http://ashrafchowdury.vercel.app/" target="_blank">
-            Portfolio
+          <Links path="/" click={handleMenuOf} title="Home" />
+          <Links path="/#blogs" click={handleMenuOf} title="Blogs" />
+          <Links path="/#auther" click={handleMenuOf} title="About Me" />
+          <a
+            href="http://ashrafchowdury.vercel.app/"
+            target="_blank"
+            className=" mt-6 lg:mt-0"
+          >
+            <span onClick={handleMenuOf}> Portfolio</span>
           </a>
         </div>
-
+        {/* absolute bottom-3 left-[50%] translate-x-[-50%]  */}
         {/************************ Mobile Menu Signup Button | hide on desktop ***************************/}
-        {currentUser?.email ? (
-          <button
-            onClick={handleLogout}
-            className="gradiant_btn lg:hidden absolute bottom-3 left-[50%] translate-x-[-50%] w-[90%] py-2 rounded font-bold text-sm text-white"
-          >
-            Log Out
-          </button>
-        ) : (
-          <Link href="/user/signup">
-            <button className="gradiant_btn lg:hidden absolute bottom-3 left-[50%] translate-x-[-50%] w-[90%] py-2 rounded font-bold text-sm text-white">
-              Sign Up
+        <div className=" w-[90%] mx-auto h-full lg:hidden flex items-end">
+          {currentUser?.email ? (
+            <button
+              onClick={handleLogout}
+              className="gradiant_btn w-full mb-8 py-2 rounded font-bold text-sm text-white"
+            >
+              Log Out
             </button>
-          </Link>
-        )}
+          ) : (
+            <Link href="/user/signup">
+              <button
+                className="gradiant_btn w-full mb-8 py-2 rounded font-bold text-sm text-white"
+                onClick={handleMenuOf}
+              >
+                Sign Up
+              </button>
+            </Link>
+          )}
+        </div>
       </section>
 
       {/**************************** Button & icons ********************************/}
@@ -227,3 +241,13 @@ const Nav = () => {
 };
 
 export default Nav;
+
+export const Links = ({ path, click, title }) => {
+  return (
+    <>
+      <Link href={path}>
+        <span onClick={click}> {title} </span>
+      </Link>
+    </>
+  );
+};

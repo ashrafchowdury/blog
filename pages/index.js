@@ -69,7 +69,7 @@ export default function Home({ posts }) {
       </Head>
 
       {/********* Header Section ************/}
-      <header className=" w-[95%] sm:w-[480px] md:w-[700px] lg:w-[1000px] xl:w-[1400px] mx-auto text-center my-14 xl:mt-24">
+      <header className=" w-[95%] sm:w-[480px] md:w-[700px] lg:w-[1000px] xl:w-[1400px] mx-auto text-center my-14 mt-24 xl:mt-24">
         <p
           data-aos="zoom-in-down"
           className="gradiant_text text-6xl md:text-[75px] lg:text-[105px] xl:text-[122px] font-bold mb-6 lg:mb-9"
