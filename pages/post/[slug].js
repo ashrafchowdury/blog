@@ -28,7 +28,7 @@ const displayImage = {
         notification("suc", "Code copied");
       };
       return (
-        <pre className="code" onClick={handleCode}>
+        <pre className="code overflow-auto" onClick={handleCode}>
           {value.code}
         </pre>
       );
