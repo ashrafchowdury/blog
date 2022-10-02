@@ -30,9 +30,8 @@ body::-webkit-scrollbar-thumb {
   h1,
   li,
   h2,
-  h3 {
-    @apply text-gray-800 dark:text-white;
-  }
+  h3,
+  h4,
   p,
   a {
     @apply text-gray-800 dark:text-white;
@@ -125,10 +124,9 @@ body::-webkit-scrollbar-thumb {
 
 /************ Gradiant Text *************/
 .gradiant_text {
-  background: linear-gradient(90deg, #375BE7 4.25%, #7ECEFB 100%);
+  background: linear-gradient(90deg, #375be7 4.25%, #7ecefb 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
-
 }

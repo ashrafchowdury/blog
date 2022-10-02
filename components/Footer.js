@@ -10,6 +10,7 @@ export class Footer extends Component {
         <section
           className=" py-6 lg:py-8 mt-9 xl:mt-20 mb-6 lg:mb-9 w-[90%] md:w-[700px] lg:w-[800px] xl:w-[1000px] mx-auto border-y-2  flex flex-col lg:flex-row lg:justify-center lg:items-center text-center lg:text-start"
           id="auther"
+          data-aos="fade-right"
         >
           <img
             src="/ashraf.png"
@@ -44,7 +45,7 @@ export class Footer extends Component {
         </section>
         {/********* Footer Section ************/}
         <footer className=" w-[90%] md:w-[700px] lg:w-[1000px] xl:w-[1400px] mx-auto mb-4">
-          <div className="text-center mb-12 md:flex md:items-center md:justify-center">
+          <div className="text-center mb-12 md:flex md:items-center md:justify-center" data-aos="fade-up">
             <h3 className=" text-xl lg:text-2xl xl:text-3xl leading-8 font-bold md:mr-4">
               Want me building stuff for you? Hit me on Linkedin
             </h3>

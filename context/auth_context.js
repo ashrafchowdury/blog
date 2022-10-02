@@ -20,7 +20,6 @@ const AuthContextProvider = ({ children }) => {
   //store user data
   const [currentUser, setcurrentUser] = useState("");
 
-
   //Subscribing the current user
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -30,8 +29,6 @@ const AuthContextProvider = ({ children }) => {
       unsubscribe();
     };
   }, []);
-
-
 
   //Firebase Signup function
   const signup = (email, password) => {

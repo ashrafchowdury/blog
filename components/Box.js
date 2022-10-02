@@ -5,7 +5,7 @@ import { urlFor } from "../sanity";
 const Box = ({ title, mainImage, slug, _id, _createdAt, categories }) => {
   return (
     <Link href={`/post/${slug.current}`}>
-      <div className=" w-[100%] md:w-[320px] lg:w-[400px] mx-3 lg:mx-4 lg:my-2 py-2 overflow-hidden cursor-pointer">
+      <div data-aos="zoom-in-up" className=" w-[100%] md:w-[320px] lg:w-[400px] mx-3 lg:mx-4 lg:my-2 py-2 overflow-hidden cursor-pointer">
         <img
           src={urlFor(mainImage).url()}
           alt={title}

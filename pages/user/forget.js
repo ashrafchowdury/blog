@@ -54,14 +54,17 @@ const forget = () => {
 
       {/* If current use are login, then send theme back to thier previous page */}
 
- 
       <section>
-        <h1 className=" text-center font-bold uppercase text-2xl md:text-3xl lg:text-4xl xl:text-5xl mt-16 md:mt-24 lg:mt-32 mb-8 md:mb-16 lg:mb-20">
+        <h1
+          data-aos="fade-down"
+          className=" text-center font-bold uppercase text-2xl md:text-3xl lg:text-4xl xl:text-5xl mt-16 md:mt-24 lg:mt-32 mb-8 md:mb-16 lg:mb-20"
+        >
           Forget Password
         </h1>
         <form
           onSubmit={handleSubmit}
           className=" w-[85%] sm:w-[80%] md:w-[400px] lg:w-[480px] mx-auto text-center"
+          data-aos="fade-up"
         >
           <Input name="email" input={handleUserInput} value={input} />
 

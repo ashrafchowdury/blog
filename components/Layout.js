@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 const Layout = ({ children }) => {
   const { pathname } = useRouter();
   useEffect(() => {
-    AOS.init({ duration: 1500 });
+    AOS.init({ duration: 1000 });
   }, []);
 
   if (pathname == "/search") {

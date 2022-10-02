@@ -119,17 +119,15 @@ const Nav = () => {
           />
         </form>
 
-
         {/************************ Links ***************************/}
         <div className="links">
           <Link href="/">Home</Link>
           <Link href="#blogs">Blogs</Link>
-          <Link href="#auther">About Me</Link>
+          <Link href="/#auther">About Me</Link>
           <a href="http://ashrafchowdury.vercel.app/" target="_blank">
             Portfolio
           </a>
         </div>
-
 
         {/************************ Mobile Menu Signup Button | hide on desktop ***************************/}
         {currentUser?.email ? (
@@ -147,7 +145,6 @@ const Nav = () => {
           </Link>
         )}
       </section>
-
 
       {/**************************** Button & icons ********************************/}
       <div className=" flex items-center">
