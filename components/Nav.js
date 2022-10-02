@@ -82,7 +82,7 @@ const Nav = () => {
       {/********************* Logo *****************************/}
       <Link href="/">
         <div className=" flex items-center cursor-pointer">
-          <img src="/logo.svg" alt="Roadmap" className=" w-6 xl:w-9" />
+          <img src="/logo.svg" alt="Roadmap" className=" w-6 xl:w-9" loading="lazy" />
           <h1 className=" font-['Righteous'] text-2xl xl:text-4xl ml-2 font-bold">
             Roadmap
           </h1>
@@ -96,7 +96,7 @@ const Nav = () => {
         {/************************ Mobile Menu Logo | hide on desktop ***************************/}
         <div className=" w-[90%] mx-auto flex justify-between items-center mt-6">
           <div className=" flex items-center lg:hidden">
-            <img src="/logo.svg" alt="Roadmap" className=" w-5" />
+            <img src="/logo.svg" alt="Roadmap" className=" w-5" loading="lazy" />
             <h1 className=" font-['Righteous'] text-xl ml-2 font-bold">
               Roadmap
             </h1>

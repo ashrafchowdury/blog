@@ -56,7 +56,7 @@ const Post = ({
 
       {/* Main Image */}
       {mainImage && (
-        <img src={urlFor(mainImage).url()} alt="image" className="banner" />
+        <img src={urlFor(mainImage).url()} alt="image" loading="lazy" className="banner"  />
       )}
 
       {/***************** Artical Section ************************/}

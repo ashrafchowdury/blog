@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Social from "./Social";
 
-
 export class Footer extends Component {
   render() {
     return (
@@ -16,6 +15,7 @@ export class Footer extends Component {
             src="/ashraf.png"
             alt="Ashraf Chowdury"
             className=" w-[110px] h-[110px] lg:w-60 lg:h-[265px] object-cover rounded-full lg:rounded mx-auto lg:mx-0 lg:mr-9 mb-3"
+            loading="lazy"
           />
           <div className=" lg:w-[500px]">
             <h3 className="gradiant_text text-xl sm:text-2xl lg:text-3xl font-bold mt-1 mb-2 md:mb-4">
@@ -34,7 +34,7 @@ export class Footer extends Component {
 
             <a
               href="http://ashrafchowdury.vercel.app/"
-              target='_blank'
+              target="_blank"
               title="View Ashraf's Portfolio"
               className=" block text-blue-500 font-bold"
             >
@@ -45,7 +45,10 @@ export class Footer extends Component {
         </section>
         {/********* Footer Section ************/}
         <footer className=" w-[90%] md:w-[700px] lg:w-[1000px] xl:w-[1400px] mx-auto mb-4">
-          <div className="text-center mb-12 md:flex md:items-center md:justify-center" data-aos="fade-up">
+          <div
+            className="text-center mb-12 md:flex md:items-center md:justify-center"
+            data-aos="fade-up"
+          >
             <h3 className=" text-xl lg:text-2xl xl:text-3xl leading-8 font-bold md:mr-4">
               Want me building stuff for you? Hit me on Linkedin
             </h3>
