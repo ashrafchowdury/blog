@@ -40,7 +40,6 @@ export default function Home({ posts }) {
   //when page load all the blogs are showen
   useEffect(() => {
     setdata(posts);
-    console.log(process.env.NEXT_PUBLIC_FIREBAS_API_KEY);
   }, []);
 
   //sort blogs
