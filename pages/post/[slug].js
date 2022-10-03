@@ -6,6 +6,7 @@ import { notification } from "../../components/Toast";
 import Box from "../../components/Box";
 
 //this object help PortableText for showing the Blog images
+
 const displayImage = {
   types: {
     image: ({ value }) => {

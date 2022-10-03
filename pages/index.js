@@ -10,6 +10,7 @@ import { sanityClient } from "../sanity";
 import { db } from "../firebase/firebase";
 import { setDoc, doc } from "firebase/firestore";
 
+
 export default function Home({ posts }) {
   const [email, setemail] = useState("");
   const [data, setdata] = useState([]);
@@ -32,7 +33,6 @@ export default function Home({ posts }) {
         .catch((error) => {
           //if something was rong, then show the Error Message
           notification("wanr", error?.message);
-          console.log(error);
         });
     }
   };
@@ -40,6 +40,7 @@ export default function Home({ posts }) {
   //when page load all the blogs are showen
   useEffect(() => {
     setdata(posts);
+    console.log(process.env.NEXT_PUBLIC_FIREBAS_API_KEY);
   }, []);
 
   //sort blogs
