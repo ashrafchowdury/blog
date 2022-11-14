@@ -54,7 +54,7 @@ export class Footer extends Component {
             </h3>
             <button className="gradiant_btn py-2 lg:py-3 px-4 lg:px-5 xl:px-6 text-sm lg:text-[16px] font-bold text-white rounded mt-5 md:mt-0">
               <a
-                href="https://www.linkedin.com/in/ashraf-chowdury-297301206/"
+                href="https://www.linkedin.com/in/ashrafchowdury/"
                 target="_balnk"
               >
                 My Linkedin
