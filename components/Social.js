@@ -9,7 +9,7 @@ const Social = () => {
           <i className="fa-brands fa-twitter gradiant_text dark:text-white"></i>
         </a>
         <a
-          href="https://www.linkedin.com/in/ashraf-chowdury-297301206/"
+          href="https://www.linkedin.com/in/ashrafchowdury/"
           target="_blank"
         >
           <i className="fa-brands fa-linkedin gradiant_text dark:text-white"></i>
